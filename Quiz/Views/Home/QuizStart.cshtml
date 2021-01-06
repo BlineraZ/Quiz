@@ -1,0 +1,62 @@
+﻿@model Quiz.Models.Question
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>
+    </title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    @using (Html.BeginForm("QuizStart", "Home", FormMethod.Post, new { @class = "question-form" }))
+    {
+        @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10" >
+                <div class="row">
+                    <h1 style="font-family:Arial,Arial, Helvetica, sans-serif">@Html.DisplayFor(x => x.QuestionText)</h1>
+                </div>
+                <br />
+                <br>
+                <div class="row">
+                    <h5>@Html.RadioButtonFor(x => x.OptionA, @Model.QuestionID, new { @class = "optionA" }) @Model.OptionA</h5>
+                </div>
+
+                <div class="row">
+                    <h5>@Html.RadioButtonFor(x => x.OptionB, @Model.QuestionID, new { @class = "optionB" }) @Model.OptionB</h5>
+                </div>
+                <div class="row">
+                    <h5>@Html.RadioButtonFor(x => x.OptionC, @Model.QuestionID, new { @class = "optionC" }) @Model.OptionC</h5>
+                </div>
+                <div class="row">
+                    <h5>@Html.RadioButtonFor(x => x.OptionD, @Model.QuestionID, new { @class = "optionD" }) @Model.OptionD</h5>
+                </div>
+
+                <div class="row" style="display:none">
+                    @Html.TextBoxFor(x=>x.CorrectOption)
+                </div>
+
+                <br /><br />
+                <div class="row">
+                    <input type="submit" value="Submit" class="btn btn-success btn-submit"/>
+                </div>
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2"></div>
+
+        </div>
+    </div>
+    }
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>    
+</body>
+</html>

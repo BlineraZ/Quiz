@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Quiz.Models.Question>
+
+
+
+@{
+    ViewBag.Title = "viewAllQuestions";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>View All Questions</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OptionA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OptionB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OptionC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OptionD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorrectOption)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category1.CategoryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OptionA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OptionB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OptionC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OptionD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorrectOption)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category1.CategoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.QuestionID }) |
+            
+            @Html.ActionLink("Delete", "Delete", new { id=item.QuestionID })
+        </td>
+    </tr>
+}
+
+</table>
+
